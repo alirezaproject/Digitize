@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitize App - Shop</title>
+    <link rel="stylesheet" href="./build/tailwind.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- App Bar -->
+    <div class="flex md:hidden items-center justify-between mt-10 px-4 mb-6">
+        <div>
+            <img src="/assets/images/logo.svg" alt="Logo">
+        </div>
+        <div class="text-lg font-bold text-slate-800">
+            ساعت هوشمند
+        </div>
+        <div class="w-7 h-7 bg-white shadow-lg flex items-center justify-center rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 h-5 stroke-slate-800">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+
+        </div>
+    </div>
+
+    <!-- filter - sort section -->
+
+    <div class="flex md:hidden items-center justify-between  px-4 mb-6 gap-x-4">
+        <div class="bg-white rounded p-2  flex items-center w-1/2">
+            <div>
+                <img src="/assets/images/sort.png" alt="sort">
+            </div>
+            <span class="text-sm text-slate-800 mr-2">محبوب ترین</span>
+        </div>
+        <div class="bg-white rounded p-2  flex items-center w-1/2">
+            <div>
+                <img src="/assets/images/filter.png" alt="filter">
+
+            </div>
+            <span class="text-sm text-slate-800 mr-2">فیلتر : اپل</span>
+        </div>
+    </div>
+
+    <!-- product section -->
+
+    <div x-data="{
+        products : [
+        {id:1,title:'ساعت هوشمند اپل سری 7' , price: '۱۲,۳۵۴,۸۹۰ تومان'},
+        {id:2,title:'ساعت هوشمند اپل سری 5' , price: '۱۲,۳۵۵,۸۹۰ تومان'},
+        {id:3,title:'ساعت هوشمند اپل سری 6' , price: '۱۲,۳۵۴,۸۹۰ تومان'},
+        {id:4,title:'ساعت هوشمند اپل سری 2' , price: '۱۲,۳۵۴,۸۹۰ تومان'},
+        {id:5,title:'ساعت هوشمند اپل سری 3' , price: '۱۲,۳۵۴,۸۹۰ تومان'},
+        {id:6,title:'ساعت هوشمند اپل سری 4' , price: '۱۲,۳۵۴,۸۹۰ تومان'},
+        ]
+    }"
+        class="grid gap-x-3 gap-y-8  gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full mt-9 px-4 mb-6 sm:gap-x-4 md:gap-x-8 md:gap-y-10">
+
+        <template x-for="product in products" : key="product.id">
+            <!-- single product -->
+            <div class="bg-white rounded-xl p-2 shadow-md">
+                <div class="mb-3 bg-gray-100 rounded-xl p-2 flex justify-center items-center">
+                    <img src="/assets/images/apple-watch-7.png" alt="apple-watch-7">
+                </div>
+                <!-- product description -->
+                <div class="flex items-center justify-between w-full mb-3">
+                    <span class="text-slate-200 text-xs">اپل</span>
+                    <div class="flex items-center" x-data="{color: 'red'}">
+                        <div @click="color = 'red'" :class="color === 'red' ? 'ring-2 ring-red-400' : ''"
+                            class="w-6 h-6 sm:w-8 sm:h-8  flex items-center justify-center rounded-full cursor-pointer bg-red-400 border-2 border-white ">
+                            <svg x-show="color === 'red'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-4 h-4 sm:w-5 sm:h-5 stroke-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+
+                        </div>
+                        <div @click="color = 'blue'" :class="color === 'blue' ? 'ring-2 ring-blue-400' : ''"
+                            class="w-6 h-6 sm:w-8 sm:h-8  rounded-full cursor-pointer flex justify-center items-center bg-blue-400 border-2 border-white -mr-1.5">
+                            <svg x-show="color === 'blue'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-4 h-4 sm:w-5 sm:h-5 stroke-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+                        <div @click="color = 'green'" :class="color === 'green' ? 'ring-2 ring-green-400' : ''"
+                            class="w-6 h-6 sm:w-8 sm:h-8 rounded-full cursor-pointer flex justify-center items-center bg-green-400 border-2 border-white -mr-1.5">
+                            <svg x-show="color === 'green'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                class="w-4 h-4 sm:w-5 sm:h-5 stroke-white">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- product title -->
+                <div x-text="product.title" class="text-slate-800 text-xs font-bold mb-3"></div>
+                <!-- price -->
+                <div x-text="product.price" class="text-orange-600  font-medium text-center text-sm mb-2"></div>
+                <hr class="">
+                <button class="w-full font-bold text-orange-600 py-4 ">مشاهده و سفارش</button>
+            </div>
+        </template>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+
+</html>
